@@ -1,0 +1,488 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet"  href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.6/dist/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.2.1/dist/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald&family=Raleway:wght@200;300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+    
+    <script
+      src="https://code.jquery.com/jquery-2.2.4.min.js"
+      integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+      crossorigin="anonymous">
+    </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    
+    <!-- <link type="image/x-icon" href="{% static 'img/favicon.png' %}" rel="shortcut icon"> -->
+    <!-- <script src="//code.jivosite.com/widget/kMmeuz83BP" async></script> -->
+
+
+
+</head>
+
+<body>
+
+<div>
+ 
+
+<nav class="navbar navbar-expand-md navbar-dark bg-transparent main-nav">
+  <div class="container">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse w-100">
+          <ul class="nav navbar-nav w-100">
+              <li class="nav-item active">
+                  <a class="nav-link" href="#" style="  color:#191b1d;
+                  font-weight: 500;
+                  font-size: 16px; font-family:'Montserrat', sans-serif;
+                  ">Главная</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#" style="  color:#191b1d;
+                  font-weight: 500;
+                  font-size: 16px;  font-family:'Montserrat', sans-serif;
+                 ">Тарифы</a>
+              </li>
+          </ul>
+      </div>
+      <a  class="navbar-brand order-first order-md-0 mx-0" style="color: black; font-size: 30px; font-family: 'Raleway', sans-serif;">Arcane Switch</a>
+      <div class="collapse navbar-collapse w-100">
+          <ul class="nav navbar-nav ml-auto">
+              <li class="nav-item">
+                  <a class="nav-link" href="#" style="color:#191b1d;font-weight: 500;
+                  font-size: 16px;  font-family:'Montserrat', sans-serif;
+                  ">Блог</a>
+              </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="#" style="  color:#191b1d;
+                  font-weight: 500;
+                  font-size: 16px;  font-family:'Montserrat', sans-serif;
+                 ">Поддержка</a>
+              </li>
+          </ul>
+      </div>
+  </div>
+</nav>
+
+
+
+<style>
+#TotalRub{
+  margin-top: 2%;
+}
+#TotalUSDT{
+  padding-top: 2%;
+}
+.slidecontainer {
+    width: 100%;
+    
+}
+.slidecontainer p {
+  padding-top: 10px;
+  padding-left: 10px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 5px;
+    border-radius: 5px;
+    background: #ececec;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+.slider:hover {
+    opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #3AB6EC;
+    cursor: grab;
+}
+
+
+
+ #lop a {
+  display: block;
+ } 
+.arrow {
+  transition: margin-left .5s ease;
+  letter-spacing: 0;
+}
+
+.gradient{
+  color: black;
+  display: block;
+}
+.gradient:hover {
+  color: transparent;
+  background: linear-gradient(315deg, rgb(236, 160, 255), rgb(170, 178, 255), rgb(132, 255, 201));
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: bg-hue 2s linear infinite;
+}
+
+.gradient:hover .arrow {
+  margin-left: .5em;
+}
+
+@keyframes bg-hue {
+  100% {
+    filter: hue-rotate(-360deg);
+  }
+}
+.leftHow{
+  margin-top: 5%;
+  border-radius: 33px;
+  background: #ffffff;
+  box-shadow:  30px 30px 55px #cccccc,
+              -30px -30px 45px #f4f4f4;
+
+}
+.rightHow{
+  margin-top: 5%;
+  border-radius: 33px;
+  background: #ffffff;
+  box-shadow:  50px 50px 85px #cccccc,
+              -50px -50px 85px #f4f4f4;
+margin-left: 5%;
+}
+
+.leftHow h3, .rightHow h3{
+  font-family: "Arial Black", sans-serif;
+  font-size: 66px;
+  line-height: 72px;
+  color: #3AB6EC;
+  font-family: 'Oswald', sans-serif;
+  font-weight: bolder;
+  padding-top: 10px;
+  padding-left: 10px;
+}
+.leftHow h4, .rightHow h4{
+  padding-top: 5px;
+  padding-left: 10px;
+}
+.leftHow p, .rightHow p{
+  padding-top: 5px;
+  padding-left: 10px;
+  color: #818990;
+}
+
+.white-block{
+  background-color: white;
+  width: 100%;
+  padding-top: 5%;
+}
+.about{
+  width: 100%;
+  background-color: #F5F5F5;
+  padding-top: 5%;
+}
+.about-text{
+  width: 70%;
+  margin-left: 15%;
+  padding-top: 2%;
+  color:#666666;
+  font-weight: 500;
+  font-size: 22px;
+  font-family:'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  text-align: center;
+}
+
+.about-title{
+  text-align: center;
+  color: #333333;
+  font-family: 'Raleway', sans-serif;
+font-size: 38px;
+font-weight: 800;
+}
+.Plug{
+  color: white;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  background: #3AB6EC;
+  font-family: Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  border-radius: 8px;
+  padding: 8px 20px;
+  width: 48%;
+
+
+}
+.left-subText{
+  font-family: 'Helvetica', 'Arial', sans-serif;;
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 18px;
+
+}
+.left{
+  padding-left: 24%;
+  margin-top: 5%;
+}
+.calculator{
+  background:#FEFEFE;
+    width: 38%;
+    margin-top: 5%;
+    margin-left: 10%;
+    border-radius: 30px;
+    margin-bottom: 10%;
+  }
+.calculator-text{
+  text-align: center;
+  padding-bottom: 3%;
+  padding-top: 1%;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  color: rgb(255, 255, 255);
+  letter-spacing: 1px;
+}
+
+.raid{
+  text-align: left;
+  padding-left: 10%;
+  padding-top: 3%;
+  font-size: 18px;
+  font-weight: 700;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  color: rgb(0, 0, 0);
+
+}
+
+.bill{
+  margin-left: 12%;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+
+
+}
+.accept{
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  margin-top: 2%;
+  margin-bottom: 4%;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  background: #3AB6EC;
+  font-family: Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 19px;
+  font-weight: 400;
+  border-radius: 8px;
+  padding: 8px 20px;
+  width: 80%;
+  }
+.accept:hover{
+  background-color: #277191;
+
+}
+
+.field {
+  max-width: 100%;
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1em;
+  border-radius: 48px;
+  background: #fefefe;
+  box-shadow: 4px 5px #E3EDEB;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 80%;
+}
+.field .input {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+  outline: none;
+  border: none;
+  background: transparent;
+  transition: all ease 0.25s;
+}
+.field .input:placeholder-shown ~ .eraser {
+  opacity: 0;
+  transform: rotate(360deg);
+}
+.field .input:read-only {
+  color: #888;
+}
+.field .pencil-icon .pencil {
+  transform-origin: 0% 100%;
+}
+.field .eraser {
+  cursor: pointer;
+  color: #aaa;
+  transition: all ease 0.25s;
+}
+
+.transfer{
+text-align: center;
+font-size: 25px;
+  font-weight: 700;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-style: normal;
+}
+.transfer::after{
+  content: '';
+  border-bottom: 2px solid white;
+  background-color: #fc0;
+}
+
+
+
+
+</style>
+
+<!--  -->
+
+
+<!--  -->
+
+<script>
+
+// 
+
+
+
+
+
+// 
+
+
+  //Selector
+// const $ = (selector) => document.querySelector(selector);
+
+//Elements
+const input = $('#input'),
+						eraser = $('#eraser'),
+						pencil = $('#pencil');
+
+//Pencil animation
+input.addEventListener('input', () => {
+	pencil.animate([
+		{ transform: 'rotate(8deg)', offset:0 },
+		{ transform: 'rotate(0deg)', offset:0.2 },
+		{ transform: 'rotate(8deg)', offset:0.5 },
+		{ transform: 'rotate(0deg)', offset:1 },
+	], {
+		easing:'ease',
+		duration:1000,
+	})
+});
+
+//Eraser
+eraser.addEventListener('click', () => {
+	const loop = () => {
+		setTimeout(() => {
+			input.readOnly = true;
+			const value = input.value,
+									erased = String(value).substring(0, value.length - 1);
+			input.value = erased;
+			(value.length) ? loop() : (input.readOnly = false);
+		}, 25);
+	};
+	loop();
+});
+</script>
+<!-- 
+    <div id="cookie_notification">
+        <p style="font-size: 17px ">
+            Продолжая работу с сайтом, Вы разрешаете использование cookies-файлов в соответствии с <a href="/about/documents/personal-data/">Политикой кофинденциальности</a>.
+            Вы всегда можете отключить файлы cookies в настройках Вашего браузера.
+        </p>
+        <button class="blue_button" id="accept_cookie">Хорошо</button>
+    </div>
+
+    <div id="notify-show" style="position: fixed;">
+        <div id="notify_title" style="color: black; text-align: center; font-weight: normal;">
+        </div>
+        <hr>
+        <div id="notify_body" style="text-align: center; color: black; font-weight: bold;">
+        </div>
+    </div> -->
+
+
+
+    <div id="Modal" class="modal">
+      <div class="modal-content" >
+          <span class="closebtn" onclick="close_modal()">&times;</span>
+          <br>
+          <div id="modal_title" class="ModalTitle"></div>
+          <hr>
+          <div id="modal_body" class="ModalBody"></div>
+          <hr>
+          <div id="modal_buttons" style="text-align: right;"></div>
+      </div>
+  </div>
+
+
+
+
+  {% csrf_token %}
+                {% block content %}  
+                {% endblock %}
+
+
+              <!-- <script>
+                function checkCookies(){
+                    let cookieDate = localStorage.getItem('cookieDate');
+                    let cookieNotification = document.getElementById('cookie_notification');
+                    let cookieBtn = document.getElementById('accept_cookie');
+        
+                    if( !cookieDate || (+cookieDate + 31536000000) < Date.now() ){
+                        cookieNotification.classList.add('show');
+                    }
+
+                    cookieBtn.addEventListener('click', function(){
+                        localStorage.setItem( 'cookieDate', Date.now() );
+                        cookieNotification.classList.remove('show');
+                    })
+                }
+                checkCookies();
+
+            </script> -->
+
+
+
+            <script src="{% static 'js/index.js' %}"></script>
+
+
+
+
+</body>
+</html>
