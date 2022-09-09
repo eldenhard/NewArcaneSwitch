@@ -126,26 +126,42 @@ font-weight: 800;">
 </h2>
 
   <div class="row" style="width: 70%; margin-left: 15%;">
-    <div class="col-md-12" style="background-color: rgb(245, 245, 245); border-radius: 10px;">
+    <div class="col-md-12" style="background-color: rgb(255, 255, 255); border-radius: 10px;">
       <div class="row">
         <div class="col-md-6">
           <div class="slidecontainer">
-            <p>Сумма перевода: <span id="demo"></span></p>
-            <input type="range" min="10000" max="10000000" step="10000"  class="slider" id="myRange">
+            <div style="background: #F2F6F9;">
+                <p style=" font-weight: 500; font-size: 18px;">Сумма перевода: <span id="demo"></span></p>
+                <input type="range" min="10000" max="10000000" step="10000"  class="slider" id="myRange">
+            </div>
             <h2>Ставки:</h2>
-            <p>Конвертация: <span id="convert"></span></p>
-            <p>Документы: <span id="docs"></span></p>
-            <p>Вознаграждение исполнителя <span id="reward"></span></p>
+            <p style=" font-weight: 500; font-size: 18px; "><span style="border-bottom: 2px solid #3AB6EC;">Конвертация:</span> <span id="convert"></span></p>
+            <p style=" font-weight: 500; font-size: 18px;"><span style="border-bottom: 2px solid #3AB6EC;">Документы:</span> <span id="docs"></span></p>
+            <p style=" font-weight: 500; font-size: 18px;"><span style="border-bottom: 2px solid #3AB6EC;">Вознаграждение исполнителя</span> <span id="reward"></span></p>
           </div>
         </div>
         <div class="col-md-6" style="padding-top: 2%;">
           <h2><span style="font-family:'Raleway', sans-serif;">Итого</span> <br> <span id="TotalRub"></span> Руб</h2>
           <h3><span style="font-family: 'Raleway', sans-serif;">Или</span> <br><span  id="TotalUSDT"></span> USDT</h3>
+          <button  class="accept-how">Оформить заявку</button>
         </div>
       </div>
     </div>
   </div>
 
+  <h2 class="descriptiion-left" style="  margin-left: 15%; padding-top: 5%;   color: #333333;
+font-family: 'Raleway', sans-serif;
+font-size: 38px;
+font-weight: 800;">
+На каких условиях
+</h2>
+
+
+<h2 class="descriptiion-left" style="  margin-left: 15%; padding-top: 5%;   color: #333333;
+font-family: 'Raleway', sans-serif;
+font-size: 38px;
+font-weight: 800;">
+Наши партнеры</h2>
     {% endblock %}
 </body>
 </html>
