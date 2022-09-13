@@ -11,7 +11,7 @@ class OrderAdmin(admin.ModelAdmin):
 
 @admin.register(ContactForm)
 class ContactFormAdmin(admin.ModelAdmin):
-    list_display = [field.name for field in ContactForm._meta.get_fields()]
+    list_display = ['name', 'phone', 'email', 'message', 'created_at', 'status']
 
 
 @admin.register(Tariff)

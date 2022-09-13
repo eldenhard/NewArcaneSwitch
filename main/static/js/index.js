@@ -128,3 +128,59 @@ zoom: 15,
 const marker2 = new mapboxgl.Marker({ color: 'black'})
 .setLngLat([ 37.580813, 55.901818])
 .addTo(map);
+
+// document.querySelector("#contact-form").addEventListener("submit", function(e){
+//     e.preventDefault();
+//     let form = $(this);
+//     send_contact_form(form);
+    
+// })
+
+
+// function send_contact_form(form){
+//     let csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
+//     console.log(form.serialize());
+//     $.ajax(
+//         {
+//             data: form.serialize(),
+//             type: form.attr('method'),
+//             url: form.attr('action'),
+//             headers: {'X-CSRFToken': csrf_token},
+//             mode: 'same-origin',
+//             async: true,
+//             success : function(json)
+//             {
+//                 console.log(json);
+//             },
+//             error : function(xhr,errmsg,err) {
+//             }
+//         }
+//     )
+// }
+
+
+document.getElementById('contact-form').addEventListener(onsubmit)
+let csrfToken = document.getElementsByName("csrfmiddlewaretoken").value;
+
+function Send(){  
+    let name = document.getElementById('contact-name').value
+    let email = document.getElementById('contact-mail').value
+    let phone = document.getElementById('contact-phone').value
+    console.log(csrfToken);
+   
+    let response =  fetch('api/contact-form/create',{
+    method: 'post',
+    headers: {
+        'Content-Type': 'application/json',
+        'X-CSRFToken': csrfToken
+    },
+        body: JSON.stringify(name, email, phone)
+       
+    });
+
+    
+
+}
+
+let result = await response.json()
+console.log(result.message)

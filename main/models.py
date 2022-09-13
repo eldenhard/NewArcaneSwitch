@@ -29,8 +29,14 @@ class ContactForm(models.Model):
     email = models.EmailField(verbose_name='Почта',
                             max_length=150, default=None, blank=True)
 
+    message = models.TextField(verbose_name='Сообщение',
+                            default=None, blank=True, null=True)
+
     created_at = models.DateTimeField(verbose_name='Дата создания',
-                                    auto_created=True)
+                                    auto_now=True)
+
+    status = models.BooleanField(verbose_name='Обработан',
+                                default=False)
     
     class Meta:
         verbose_name = 'Контактная форма'
