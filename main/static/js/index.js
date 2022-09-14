@@ -3,6 +3,11 @@ let tarif = null;
 
 let slider = document.getElementById("myRange");
 let main_input = document.getElementById("input_main")
+let input_request = document.getElementById("input_request")
+
+let openModalButtons = document.querySelectorAll('.open-modal');
+let closeModalButton = document.querySelector('.close-modal');
+let modalOverlay = document.querySelector('#modal-overlay');
 
 
 let output = document.getElementById("demo");
@@ -17,14 +22,16 @@ function prepare_page(){
     
     document.getElementById("myRange").value = "250000";
     document.getElementById("demo").innerHTML = "250 000 РУБ";
-
+    document.getElementById("input_request").value = "50000"
     document.getElementById("input_main").value = "50000";
 
     main_input= 50000;
+    input_request = 50000;
     slider.value = 250000;
 
     calc_plan_cost(slider);
-    calc_first_cost(input_main)
+    calc_request(input_request);
+    calc_first_cost(input_main);
 }
 
 function split_number(number)
@@ -91,6 +98,27 @@ main_input.oninput = function(){
     calc_first_cost(this)
 }
 
+function  calc_request(calculate){
+    output.innerHTML = Number((calculate.value));
+
+let TotalRubRequest = Number(calculate.value);
+let convertRequest = Number((calculate.value * tarif.convertation)/100)
+document.getElementById("convert-request").innerHTML = '+ ' + split_number(convertRequest) + ` РУБ`
+
+let docsRequest = Number((calculate.value * tarif.documentation)/100)
+document.getElementById("docs-request").innerHTML = '+ ' +split_number(docsRequest) + ` РУБ`
+
+let rewardRequest = Number((calculate.value * tarif.operation)/100)
+document.getElementById("reward-request").innerHTML = '+ ' + split_number(rewardRequest) + ` РУБ`
+
+document.getElementById("TotalRub-request").innerHTML = split_number(Math.round(TotalRubRequest  + convertRequest + docsRequest + rewardRequest)) + ` РУБ`
+  
+}
+input_request.oninput = function() {
+    calc_request(this);
+}
+
+
 function calc_plan_cost(calculator){
     output.innerHTML = Number(calculator.value);
 
@@ -118,23 +146,19 @@ slider.oninput = function() {
 }
 
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiZWxkZW5oYXJkIiwiYSI6ImNsN3hhNnZrbTAwd3Mzdmp1dWNuNTB3cTMifQ.1qEgIq7tKtFZwx-NfWqYRA';
-const map = new mapboxgl.Map({
-container: 'map',
-style: 'mapbox://styles/mapbox/streets-v11',
-center: [ 37.580813, 55.901818],
-zoom: 15,
-});
-const marker2 = new mapboxgl.Marker({ color: 'black'})
-.setLngLat([ 37.580813, 55.901818])
-.addTo(map);
 
-// document.querySelector("#contact-form").addEventListener("submit", function(e){
-//     e.preventDefault();
-//     let form = $(this);
-//     send_contact_form(form);
+document.querySelector("#contact-form").addEventListener("submit", function(e){
+    e.preventDefault();
+    let myFormData = new FormData(event.target);
+    let formDataObj = {};
+    myFormData.forEach((value, key) => (formDataObj[key] = value));
+    console.log(formDataObj);
+    Send(formDataObj);
     
-// })
+})
+
+
+
 
 
 // function send_contact_form(form){
@@ -159,28 +183,51 @@ const marker2 = new mapboxgl.Marker({ color: 'black'})
 // }
 
 
-document.getElementById('contact-form').addEventListener(onsubmit)
-let csrfToken = document.getElementsByName("csrfmiddlewaretoken").value;
-
-function Send(){  
-    let name = document.getElementById('contact-name').value
-    let email = document.getElementById('contact-mail').value
-    let phone = document.getElementById('contact-phone').value
-    console.log(csrfToken);
-   
-    let response =  fetch('api/contact-form/create',{
-    method: 'post',
+function Send(formDataObj){
+ let csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+   fetch('api/contact-form/create/', {
+    method: 'POST',
     headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json;charset=utf-8',
         'X-CSRFToken': csrfToken
     },
-        body: JSON.stringify(name, email, phone)
+        body: JSON.stringify(formDataObj)
        
-    });
-
-    
+    })
+  .then((response) => 
+    {
+        if (response.ok){
+            return response.json().then((data)=>{
+                console.log(data);
+            })
+           
+        }
+        else{
+            console.log('NOT OK')
+        }
+    })
+//   .then(result => console.log(response.status))
 
 }
 
-let result = await response.json()
-console.log(result.message)
+openModalButtons.forEach((button) =>
+  button.addEventListener('click', openModal)
+);
+modalOverlay.addEventListener('click', closeModal);
+// document.addEventListener('keydown', closeModal);
+
+function openModal() {
+  modalOverlay.classList.remove('hidden');
+}
+
+function closeModal(event) {
+  if (
+    event.target.classList.contains('close-modal') ||
+    event.target.id === 'modal-overlay' ||
+    (event.type === 'keydown' && event.key === 'Escape')
+  ) {
+    modalOverlay.classList.add('hidden');
+  }
+}
+
+
