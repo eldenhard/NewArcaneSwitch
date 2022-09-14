@@ -83,17 +83,18 @@
 <style>
 
 #modal-overlay {
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.6);
   backdrop-filter: blur(4px);
+  z-index: 900;
 }
 
 #modal-content {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -101,7 +102,9 @@
   z-index: 10;
   padding: 4rem;
   border-radius: 5px;
-  width: 70%;
+  width: 50%;
+  border-radius: 10px;
+  z-index: 1000;
 }
 
 button.close-modal {

@@ -68,10 +68,10 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
   </div>
 </div>
 <style>
-  .modal-content-title {
-    text-align: center;
-    padding-bottom: 3%;
-  }
+.modal-content-title {
+  text-align: center;
+  padding-bottom: 2%;
+}
  .calculator-request{
   border: 1px solid grey;
   border-radius: 10px;
@@ -116,26 +116,29 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
   font-weight: 400;
   border-radius: 8px;
   padding: 8px 20px;
-  width: 100%;
+  width: 80%;
+
 }
 .btn_req:hover {
   background:#26789b;
 }
+
 </style>
 <!-- Модальное окно -->
 
 <aside id="modal-overlay" class="hidden">
   <section id="modal-content">
     <button class="close-modal">&#10005;</button>
-    <h2 class="modal-content-title">Оформление заявки</h2>
+    <h2 class="modal-content-title"><span style="border-bottom: 2px solid #3AB6EC;">Оформление заявки</span></h2>
     <form action="">
       <div class="row" style="width: 80%; margin-left: 10%;">
-          <div class="col-md-6">
+          <div class="col-md-6" style=" padding-top: 15%;">
             <input type="text" class="inp-req" placeholder="Имя"> <br>
             <input type="text" class="inp-req" placeholder="Телефон"> <br>
             <input type="text" class="inp-req" placeholder="email">
+            <p style="font-size: 16px; padding-top: 10px; font-weight: bold;">Сумма к переводу: <span id="result_modal"></span></p>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-6" >
             <div class="calculator-request">
               <div style="background: #646668; border-top-left-radius: 10px; border-top-right-radius:10px ;">
                 <p class="calculator-request-text">Калькулятор</p>
@@ -196,7 +199,7 @@ font-weight: 800;">
     <div class="col-md-6 ">
       <div class="p-3 border leftHow" id="lop">
         <h3>1 шаг</h3>
-        <h4> <a href="#" class="gradient">Оставьте заявку <span class="arrow">➔</span></a></h4>
+        <h4> <a href="#contact" class="gradient">Оставьте заявку <span class="arrow">➔</span></a></h4>
       <p>Оставьте заявку через форму обратной связи</p></div>
     </div>
     <div class="col-md-6">
@@ -259,12 +262,63 @@ font-weight: 800;">
     </div>
   </div>
 
-  <h2 class="descriptiion-left" style="  margin-left: 15%; padding-top: 5%;   color: #333333;
+  <!-- <h2 class="descriptiion-left" style="  margin-left: 15%; padding-top: 5%;   color: #333333;
 font-family: 'Raleway', sans-serif;
 font-size: 38px;
 font-weight: 800;">
 На каких условиях
-</h2>
+</h2> -->
+
+<div class="container my-5">
+  <section id="steps">
+      <div class="text-center mb-5">
+<br>          
+<h2 class="font-weight-bold display-4 ">Как это <span style=" color: #3AB6EC">Работает?</span></h2>
+      </div>
+      <div class="row">
+          <div class="col-md-4" >
+              <div class=" position-relative px-3 my-5" style="height: 350px; background: #F2F6F9; border-radius: 10px;">
+                  <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
+                       style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #000000;">
+                      1
+                  </div>
+                  <div class="px-3 text-center pb-3">
+                      <h4><span style="border-bottom: 2px solid  #3AB6EC">Заявка</span></h4>
+                      <p class="my-3" style="font-size: 20px;">Оставьте заявку на сайте, выбрав необходимую сумму к переводу.
+                        Следует учесть, что счет вам будет выставлен в национальной валюте РФ, платеж придет в криптовалюте USDT
+                      </p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4" >
+              <div class="position-relative px-3 my-5" style="height: 350px; background: #F2F6F9; border-radius: 10px;">
+                  <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
+                       style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #000000;">
+                      2
+                  </div>
+                  <div class="px-3 text-center pb-3">
+                      <h4><span style="border-bottom: 2px solid  #3AB6EC">Обратная связь</span></h4>
+                      <p class="my-3" style="font-size: 20px;">После того как вы оставите заявку мы свяжемся с вами для получения дополнительной 
+                        информации и заключения договора на оказание услуг</p>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="position-relative px-3 my-5" style="height: 350px; background: #F2F6F9; border-radius: 10px;">
+                  <div class="font-weight-bold circle text-white rounded-circle d-flex align-items-center justify-content-center mx-auto position-relative border border-white"
+                       style="width: 60px;height: 60px;top: -30px;border-width: 4px !important; background-color: #000000;">
+                      3
+                  </div>
+                  <div class="px-3 text-center pb-3">
+                      <h4><span style="border-bottom: 2px solid  #3AB6EC;">Получение средств</span></h4>
+                      <p class="my-3" style="font-size: 20px;">Если вам все подошло, то вам будет выставлен платежный счет,
+                         после вашей оплаты деньги будут доставлены по указанному адресу в тчении суток</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+</div>
 
 
 <h2 class="descriptiion-left" style="  margin-left: 15%; padding-top: 5%;   color: #333333;
@@ -272,6 +326,18 @@ font-family: 'Raleway', sans-serif;
 font-size: 38px;
 font-weight: 800;">
 Наши партнеры</h2>
+
+<div class="row" style="margin-top: 3%;">
+  <div class="col-md-6">
+    <img src="{% static 'img/map.png' %}" alt="" style="margin-left:40%;">
+
+  </div>
+  <div class="col-md-6">
+   <h2 style="padding-top: 20%;">Основные наши партнеры находятся в <br>
+    <span style="border-bottom: 3px solid #3AB6EC;">Восточно-Азиатском регионе</span> </h2>
+  </div>
+</div>
+
 
 
 <div class="official-company">
@@ -297,7 +363,7 @@ font-weight: 800;">
 
 
 
-<section id="contact" class="add-padding border-top-color2">
+<section id="contact" class="add-padding border-top-color2" >
 		
   <div class="container text-center">
     

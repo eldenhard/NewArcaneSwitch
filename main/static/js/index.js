@@ -1,5 +1,7 @@
 let price = 0;
 let tarif = null;
+let Sum;
+console.log(Sum)
 
 let slider = document.getElementById("myRange");
 let main_input = document.getElementById("input_main")
@@ -22,12 +24,14 @@ function prepare_page(){
     
     document.getElementById("myRange").value = "250000";
     document.getElementById("demo").innerHTML = "250 000 РУБ";
+    slider.value = 250000;
+
+
     document.getElementById("input_request").value = "50000"
     document.getElementById("input_main").value = "50000";
 
     main_input= 50000;
     input_request = 50000;
-    slider.value = 250000;
 
     calc_plan_cost(slider);
     calc_request(input_request);
@@ -38,6 +42,23 @@ function split_number(number)
 {
 	return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ");
 }
+
+
+// Плавный скролл
+const smoothLinks = document.querySelectorAll('a[href^="#"]');
+for (let smoothLink of smoothLinks) {
+    smoothLink.addEventListener('click', function (e) {
+        e.preventDefault();
+        const id = smoothLink.getAttribute('href');
+
+        document.querySelector(id).scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+    });
+};
+	
+
 
 
 function actualPrice(){
@@ -78,7 +99,7 @@ function getTariff(){
         }
     )
 }
-
+// Первый калькулятор
 function calc_first_cost(calc){
     output.innerHTML = Number((calc.value));
 
@@ -93,32 +114,37 @@ let rewardMain = Number((calc.value * tarif.operation)/100)
 document.getElementById("reward-main").innerHTML = '+ ' + split_number(rewardMain) + ` РУБ`
 
 document.getElementById("TotalRub-main").innerHTML = split_number(Math.round(TotalRubMain  + convertMain + docsMain + rewardMain)) + ` РУБ`
+
+Sum = split_number(Math.round(TotalRubMain  + convertMain + docsMain + rewardMain))
 }
 main_input.oninput = function(){
     calc_first_cost(this)
 }
 
-function  calc_request(calculate){
-    output.innerHTML = Number((calculate.value));
+// Калькулятор модального окна
+function calc_request(modal){
+    output.innerHTML = Number((modal.value));
 
-let TotalRubRequest = Number(calculate.value);
-let convertRequest = Number((calculate.value * tarif.convertation)/100)
+let TotalRubRequest = Number(modal.value);
+let convertRequest = Number((modal.value * tarif.convertation)/100)
 document.getElementById("convert-request").innerHTML = '+ ' + split_number(convertRequest) + ` РУБ`
 
-let docsRequest = Number((calculate.value * tarif.documentation)/100)
+let docsRequest = Number((modal.value * tarif.documentation)/100)
 document.getElementById("docs-request").innerHTML = '+ ' +split_number(docsRequest) + ` РУБ`
 
-let rewardRequest = Number((calculate.value * tarif.operation)/100)
+let rewardRequest = Number((modal.value * tarif.operation)/100)
 document.getElementById("reward-request").innerHTML = '+ ' + split_number(rewardRequest) + ` РУБ`
 
 document.getElementById("TotalRub-request").innerHTML = split_number(Math.round(TotalRubRequest  + convertRequest + docsRequest + rewardRequest)) + ` РУБ`
+document.getElementById("result_modal").innerHTML = split_number(Math.round(TotalRubRequest  + convertRequest + docsRequest + rewardRequest)) + ` РУБ`
+
   
 }
 input_request.oninput = function() {
     calc_request(this);
 }
 
-
+// Калькулятор по слайдеру
 function calc_plan_cost(calculator){
     output.innerHTML = Number(calculator.value);
 
@@ -144,6 +170,21 @@ function calc_plan_cost(calculator){
 slider.oninput = function() {
     calc_plan_cost(this);
 }
+
+
+mapboxgl.accessToken = 'pk.eyJ1IjoiZWxkZW5oYXJkIiwiYSI6ImNsN3hhNnZrbTAwd3Mzdmp1dWNuNTB3cTMifQ.1qEgIq7tKtFZwx-NfWqYRA';
+const map = new mapboxgl.Map({
+container: 'map',
+// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+style: 'mapbox://styles/mapbox/streets-v11',
+center: [37.580813, 55.901818],
+zoom: 15
+});
+// Create a default Marker and add it to the map.
+const marker1 = new mapboxgl.Marker()
+.setLngLat([37.580813, 55.901818])
+.addTo(map);
+ 
 
 
 
