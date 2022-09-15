@@ -1,3 +1,4 @@
+from this import d
 from django.db import models
 
 # Create your models here.
@@ -65,7 +66,13 @@ class Order(models.Model):
     fiat_amount = models.FloatField(verbose_name='Сумма заказа',
                                     default=0, blank=False)
 
-    client = models.ForeignKey(ContactForm, verbose_name='Контактное лицо',
+    usdt_amount = models.FloatField(verbose_name='Сумма в USDT',
+                                    default=0, blank=False)
+
+    tariff = models.OneToOneField(Tariff, verbose_name='Рассчитанный тариф',
+                                default=None, blank=True, on_delete=models.PROTECT)
+
+    client = models.OneToOneField(ContactForm, verbose_name='Контактное лицо',
                                 default=None, blank=True, on_delete=models.PROTECT)
 
     class Meta:

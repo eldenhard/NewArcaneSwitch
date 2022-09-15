@@ -1,11 +1,8 @@
 let price = 0;
 let tarif = null;
-let Sum;
-console.log(Sum)
 
 let slider = document.getElementById("myRange");
 let main_input = document.getElementById("input_main")
-let input_request = document.getElementById("input_request")
 
 let openModalButtons = document.querySelectorAll('.open-modal');
 let closeModalButton = document.querySelector('.close-modal');
@@ -27,11 +24,8 @@ function prepare_page(){
     slider.value = 250000;
 
 
-    document.getElementById("input_request").value = "50000"
     document.getElementById("input_main").value = "50000";
-
     main_input= 50000;
-    input_request = 50000;
 
     calc_plan_cost(slider);
     calc_request(input_request);
@@ -115,7 +109,6 @@ document.getElementById("reward-main").innerHTML = '+ ' + split_number(rewardMai
 
 document.getElementById("TotalRub-main").innerHTML = split_number(Math.round(TotalRubMain  + convertMain + docsMain + rewardMain)) + ` РУБ`
 
-Sum = split_number(Math.round(TotalRubMain  + convertMain + docsMain + rewardMain))
 }
 main_input.oninput = function(){
     calc_first_cost(this)
@@ -136,7 +129,7 @@ let rewardRequest = Number((modal.value * tarif.operation)/100)
 document.getElementById("reward-request").innerHTML = '+ ' + split_number(rewardRequest) + ` РУБ`
 
 document.getElementById("TotalRub-request").innerHTML = split_number(Math.round(TotalRubRequest  + convertRequest + docsRequest + rewardRequest)) + ` РУБ`
-document.getElementById("result_modal").innerHTML = split_number(Math.round(TotalRubRequest  + convertRequest + docsRequest + rewardRequest)) + ` РУБ`
+document.getElementById("result_modal").innerHTML = split_number(Math.round(modal.value / price)) + ` USDT`
 
   
 }
@@ -259,6 +252,11 @@ modalOverlay.addEventListener('click', closeModal);
 
 function openModal() {
   modalOverlay.classList.remove('hidden');
+  let input_request = document.getElementById("input_main").value
+   document.getElementById('input_request').value = input_request
+   calc_request(document.getElementById('input_request'))
+
+  
 }
 
 function closeModal(event) {
