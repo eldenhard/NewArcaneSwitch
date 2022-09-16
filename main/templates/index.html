@@ -67,63 +67,52 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
     </div>
   </div>
 </div>
+
+
+  <!-- Уведомления -->
+  <div class="wrapper-success" id="notifications" style="display: none;">
+    <div class="card">
+      <div class="subject">
+        <h4>Запрос отправлен</h4>
+        <p>Мы свяжемся с вами в течении суток</p>
+      </div>
+    </div>
+  </div>
+<!-- Конец Уведомления -->
+
+
 <style>
-.modal-content-title {
-  text-align: center;
-  padding-bottom: 2%;
-}
- .calculator-request{
-  border: 1px solid grey;
-  border-radius: 10px;
-  max-width: 300px;
- } 
- .calculator-request-text{ 
-  text-align: center;
-  font-size: 24px;
-  font-weight: 700;
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-style: normal;
-  color: rgb(255, 255, 255);
-  letter-spacing: 1px;
+.wrapper-success {
+  margin: 50px;
+  position: fixed;
+  top: 0;
+  float: right;
+  z-index: 10;
 
- }
-.inp-req{
-  text-decoration: none;
-  border: none;
-  outline: none;
-  border-bottom: 1px solid black;
-  padding-top: 4%;
+}
+
+.wrapper-success .card {
   width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: #fff;
+  padding: 10px 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-right: 5px solid #3AB6EC;
+  border-radius: 3px;
+  border-radius: 10px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.inp-req:focus{
-  border-bottom: 1px solid #3AB6EC;
-
+.wrapper-success .card .subject {
+  margin-right: 10px;
 }
-.btn_req{
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  margin-top: 2%;
-  margin-bottom: 2%;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-  outline: none;
-  border: none;
-  background: #3AB6EC;
-  font-family: Helvetica, Arial, sans-serif, "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 19px;
-  font-weight: 400;
-  border-radius: 8px;
-  padding: 8px 20px;
-  width: 80%;
-
+.wrapper-success .card .subject p {
+  color: #909092;
 }
-.btn_req:hover {
-  background:#26789b;
-}
-
 </style>
+
 <!-- Модальное окно -->
 
 <aside id="modal-overlay" class="hidden">
@@ -370,9 +359,6 @@ font-weight: 800;">
     </div>
   </div>
 </div>
-
-
-
 
 
 

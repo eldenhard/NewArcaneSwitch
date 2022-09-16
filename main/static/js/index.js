@@ -12,6 +12,9 @@ let modalOverlay = document.querySelector('#modal-overlay');
 let output = document.getElementById("demo");
 output.innerHTML = slider.value;
 
+let notif = document.getElementById('notifications')
+document.getElementById('notifications').style.display = 'none'
+
 document.addEventListener('DOMContentLoaded', prepare_page);
 
 
@@ -26,6 +29,8 @@ function prepare_page(){
 
     document.getElementById("input_main").value = "50000";
     main_input= 50000;
+    document.getElementById('notifications').style.display = 'none'
+
 
     calc_plan_cost(slider);
     calc_request(input_request);
@@ -210,6 +215,11 @@ document.querySelector("#modal_post_form").addEventListener("submit", function(e
     
 })
 
+function NotifDisable(){
+    document.getElementById('notifications').style.display = 'none'
+
+}
+
 function SendModal(formDataObjModal){
     let csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
       fetch('api/order-form/create/', {
@@ -226,7 +236,11 @@ function SendModal(formDataObjModal){
            if (response.ok){
                return response.json().then((data)=>{
                    console.log(data);
-                   alert('Ваши данные успешно отправлены')
+                   document.getElementById('notifications').style.display = 'block'
+                   document.getElementById('modal-overlay').style.display = 'none';
+                   setTimeout(NotifDisable, 2000);
+                   
+
                })
            }
            else{
@@ -299,5 +313,6 @@ function Send(formDataObj){
 //   .then(result => console.log(response.status))
 
 }
+
 
 
