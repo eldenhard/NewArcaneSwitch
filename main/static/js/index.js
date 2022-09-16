@@ -56,7 +56,6 @@ for (let smoothLink of smoothLinks) {
 
 
 function actualPrice(){
-    
     $.ajax(
         {
             url : `https://api.binance.com/api/v3/ticker/price?symbol=USDTRUB`,
@@ -64,7 +63,6 @@ function actualPrice(){
             async: false,
             success : function(json) {
                     price = Number(json.price);
-
             }
             ,
             error : function(xhr,errmsg,err) {
@@ -76,7 +74,6 @@ function actualPrice(){
 
 function getTariff(){
     let csrf_token = document.getElementsByName('csrfmiddlewaretoken').value;
-    
     $.ajax(
         {
             url : '/api/tariff/1',
@@ -85,7 +82,6 @@ function getTariff(){
             async: false,
             success : function(json) {
                     tarif = json;
-
             }
             ,
             error : function(xhr,errmsg,err) {
@@ -120,16 +116,16 @@ function calc_request(modal){
 
 let TotalRubRequest = Number(modal.value);
 let convertRequest = Number((modal.value * tarif.convertation)/100)
-document.getElementById("convert-request").innerHTML = '+ ' + split_number(convertRequest) + ` РУБ`
+document.getElementById("convert-request").value = convertRequest
 
 let docsRequest = Number((modal.value * tarif.documentation)/100)
-document.getElementById("docs-request").innerHTML = '+ ' +split_number(docsRequest) + ` РУБ`
+document.getElementById("docs-request").value = docsRequest
 
 let rewardRequest = Number((modal.value * tarif.operation)/100)
-document.getElementById("reward-request").innerHTML = '+ ' + split_number(rewardRequest) + ` РУБ`
+document.getElementById("reward-request").value = rewardRequest
 
-document.getElementById("TotalRub-request").innerHTML = split_number(Math.round(TotalRubRequest  + convertRequest + docsRequest + rewardRequest)) + ` РУБ`
-document.getElementById("result_modal").innerHTML = split_number(Math.round(modal.value / price)) + ` USDT`
+document.getElementById("TotalRub-request").value = split_number(Math.round(TotalRubRequest  + convertRequest + docsRequest + rewardRequest))
+document.getElementById("result_modal").value = Math.round(modal.value / price)
 
   
 }
@@ -155,31 +151,94 @@ function calc_plan_cost(calculator){
 
   let TotalRub = Number(calculator.value);
   document.getElementById("TotalRub").innerHTML =  split_number(Math.round(TotalRub  + convert + docs + reward));
-
-
   document.getElementById("demo").innerHTML = `${split_number(calculator.value)}` + ' РУБ';
 }
-
 slider.oninput = function() {
     calc_plan_cost(this);
 }
 
-
+// Карта Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZWxkZW5oYXJkIiwiYSI6ImNsN3hhNnZrbTAwd3Mzdmp1dWNuNTB3cTMifQ.1qEgIq7tKtFZwx-NfWqYRA';
 const map = new mapboxgl.Map({
 container: 'map',
-// Choose from Mapbox's core styles, or make your own style with Mapbox Studio
+
 style: 'mapbox://styles/mapbox/streets-v11',
 center: [37.580813, 55.901818],
 zoom: 15
 });
-// Create a default Marker and add it to the map.
+
 const marker1 = new mapboxgl.Marker()
 .setLngLat([37.580813, 55.901818])
 .addTo(map);
  
 
 
+
+// Открытие модального окна
+openModalButtons.forEach((button) =>
+    button.addEventListener('click', openModal));
+
+modalOverlay.addEventListener('click', closeModal);
+    document.addEventListener('keydown', closeModal);
+
+function openModal() {
+  modalOverlay.classList.remove('hidden');
+  let input_request = document.getElementById("input_main").value
+   document.getElementById('input_request').value = input_request
+   calc_request(document.getElementById('input_request'))  
+}
+
+function closeModal(event) {
+  if (
+    event.target.classList.contains('close-modal') ||
+    event.target.id === 'modal-overlay' ||
+    (event.type === 'keydown' && event.key === 'Escape')
+  ) {
+    modalOverlay.classList.add('hidden');
+  }
+}
+
+
+// Отправка данных из модального окна
+document.querySelector("#modal_post_form").addEventListener("submit", function(e){
+    e.preventDefault();
+    let myFormDataModal = new FormData(event.target);
+    let formDataObjModal = {};
+    myFormDataModal.forEach((value, key) => (formDataObjModal[key] = value));
+    console.log(formDataObjModal);
+    SendModal(formDataObjModal);
+    
+})
+
+function SendModal(formDataObjModal){
+    let csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
+      fetch('api/order-form/create/', {
+       method: 'POST',
+       headers: {
+           'Content-Type': 'application/json;',
+           'X-CSRFToken': csrfToken
+       },
+           body: JSON.stringify(formDataObjModal)
+          
+       })
+     .then((response) => 
+       {
+           if (response.ok){
+               return response.json().then((data)=>{
+                   console.log(data);
+                   alert('Ваши данные успешно отправлены')
+               })
+           }
+           else{
+               console.log('NOT OK')
+           }
+       })
+   //   .then(result => console.log(response.status))
+   
+   }
+
+
+// Отправка данных из формы footer
 
 document.querySelector("#contact-form").addEventListener("submit", function(e){
     e.preventDefault();
@@ -190,10 +249,6 @@ document.querySelector("#contact-form").addEventListener("submit", function(e){
     Send(formDataObj);
     
 })
-
-
-
-
 
 // function send_contact_form(form){
 //     let csrf_token = $('input[name="csrfmiddlewaretoken"]').val();
@@ -216,7 +271,6 @@ document.querySelector("#contact-form").addEventListener("submit", function(e){
 //     )
 // }
 
-
 function Send(formDataObj){
  let csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
    fetch('api/contact-form/create/', {
@@ -233,6 +287,8 @@ function Send(formDataObj){
         if (response.ok){
             return response.json().then((data)=>{
                 console.log(data);
+                alert('Ваши данные успешно отправлены')
+
             })
            
         }
@@ -242,31 +298,6 @@ function Send(formDataObj){
     })
 //   .then(result => console.log(response.status))
 
-}
-
-openModalButtons.forEach((button) =>
-  button.addEventListener('click', openModal)
-);
-modalOverlay.addEventListener('click', closeModal);
-// document.addEventListener('keydown', closeModal);
-
-function openModal() {
-  modalOverlay.classList.remove('hidden');
-  let input_request = document.getElementById("input_main").value
-   document.getElementById('input_request').value = input_request
-   calc_request(document.getElementById('input_request'))
-
-  
-}
-
-function closeModal(event) {
-  if (
-    event.target.classList.contains('close-modal') ||
-    event.target.id === 'modal-overlay' ||
-    (event.type === 'keydown' && event.key === 'Escape')
-  ) {
-    modalOverlay.classList.add('hidden');
-  }
 }
 
 

@@ -130,15 +130,17 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
   <section id="modal-content">
     <button class="close-modal">&#10005;</button>
     <h2 class="modal-content-title"><span style="border-bottom: 2px solid #3AB6EC;">Оформление заявки</span></h2>
-    <form action="">
+
+    <form id="modal_post_form">
+      {% csrf_token %}
       <div class="row" style="width: 80%; margin-left: 10%;">
           <div class="col-md-6" style=" padding-top: 15%;">
-            <input type="text" class="inp-req" placeholder="Имя"> <br>
-            <input type="text" class="inp-req" placeholder="Телефон"> <br>
-            <input type="text" class="inp-req" placeholder="email">
-            <p style="font-size: 16px; padding-top: 10px; font-weight: bold;">Сумма к получению: <span id="result_modal"></span></p>
-
+            <input type="text" class="inp-req" placeholder="Имя" name="name" value="Alexey" required> <br>
+            <input type="number" class="inp-req" placeholder="Телефон" name="phone" value="99999" required> <br>
+            <input type="email" class="inp-req" placeholder="email" name="email" value="re@mail.ru" required>
+            <p style="font-size: 16px; padding-top: 10px; font-weight: bold;">Сумма к получению: <input id="result_modal" name="usdt_amount" style="border: none; text-decoration: none;" readonly ></p>
           </div>
+
           <div class="col-md-6" >
             <div class="calculator-request">
               <div style="background: #646668; border-top-left-radius: 10px; border-top-right-radius:10px ;">
@@ -152,7 +154,7 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
                           <path id="pencil" class="pencil" d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
                         </svg>
                       </span>
-                      <input id="input_request" class="input" type="number" placeholder="Введите сумму" />
+                      <input id="input_request" class="input" type="number" placeholder="Введите сумму" name="fiat_amount" />
                       <span id="eraser" class="icon eraser">
                         <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
                           <circle cx="12" cy="12" r="10"></circle>
@@ -161,20 +163,36 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
                         </svg>
                       </span>
                     </label>
+
                   <p class="raid">Ставки:</p>
                        <hr>
-                  <p class="bill">Конвертация <span  id="convert-request"></span></p>
-                  <p class="bill">Документы <span id="docs-request"></span></p>
-                  <p class="bill">Исполнитель <span id="reward-request"></span></p>
-                   <p class="transfer">Итого: <span id="TotalRub-request"></span></p>
-          </div>
+                              <p class="bills">Конвертация </p>
+                                  <input  id="convert-request" name="convertation" type="text" value="0"  style="font-weight: 400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black; padding: 0 !important;margin: 0 !important; position: relative; left: 50%; transform: translate(-50%,0); " readonly>
+
+                            <p class="bills">Документы </p>
+                                <input id="docs-request" name="documentation" type="text"  value="0" style="font-weight:400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin: 0; position: relative; left: 50%; transform: translate(-50%,0);" readonly> 
+
+                            <p class="bills">Исполнитель</p>
+                                 <input id="reward-request" name="operation"  value="0"  style="font-weight: 400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin: 0; position: relative; left: 50%; transform: translate(-50%,0);" readonly>
+                     
+
+                            <p class="transfers">Итого:</p>
+                                <input id="TotalRub-request" style=" width: 50%; font-weight: 400; width: 50%; font-size: 18px; text-align: center; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin-bottom: 10px; position: relative; left: 50%; transform: translate(-50%,0);" readonly>
+                      
         </div>
       </div>
-        <button class="btn_req">Отправить заявку</button>
+        <button type="submit" class="btn_req">Отправить заявку</button>
     </form>
+
   </section>
 </aside>
 
+<style>
+ #TotalRub-request::after{
+  content: 'РУБ';
+  color: #000000;
+ } 
+</style>
 <!--Конец модального окно -->
 
 
@@ -263,12 +281,7 @@ font-weight: 800;">
     </div>
   </div>
 
-  <!-- <h2 class="descriptiion-left" style="  margin-left: 15%; padding-top: 5%;   color: #333333;
-font-family: 'Raleway', sans-serif;
-font-size: 38px;
-font-weight: 800;">
-На каких условиях
-</h2> -->
+
 
 <div class="container my-5">
   <section id="steps">
@@ -365,18 +378,12 @@ font-weight: 800;">
 
 
 <section id="contact" class="add-padding border-top-color2" >
-		
   <div class="container text-center">
-    
     <div class="row">
-    
       <div class="col-sm-6 col-md-5 text-right scrollimation fade-up d1">
-      
         <h1 class="big-text">УЗНАЙТЕ БОЛЬШЕ
           НА КОНСУЛЬТАЦИИ</h1>
-        
         <p class="lead">Оставьте заявку, и мы свяжемся с вам в ближайшее время</p>
-
       </div>
     
 
@@ -404,26 +411,109 @@ font-weight: 800;">
           <i class="fa fa-envelope"></i>
           </div>
         </div>
-        
-        <!-- <div class="form-group">
-          <label class="control-label" for="contact-message">Сообщение</label>
-          <div class="controls">
-            <textarea id="contact-message" name="comments"  placeholder="Сообщение" class="form-control requiredField" data-new-placeholder="Сообщение" rows="6" data-error-empty="Пожалуйста введите сообщение"></textarea>
-            <i class="fa fa-comment"></i>
-          </div>
-        </div> -->
+
         
         <button type="submit" class="btn btn-color2 btn-block">Отправить</button>
-        
-      </form><!-- End contact-form -->
-      
+      </form>
     </div>
-    
   </div>
-
 </section>
 
+<footer class="footer-section">
+  <div class="container">
+      <div class="footer-cta pt-5 pb-5">
+          <div class="row">
+              <div class="col-xl-4 col-md-4 mb-30">
+                  <div class="single-cta">
+                      <i class="fas fa-map-marker-alt"></i>
+                      <div class="cta-text">
+                          <h4>Адрес</h4>
+                          <span>Москва, Новгородская 26</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-4 col-md-4 mb-30">
+                  <div class="single-cta">
+                      <i class="fas fa-phone"></i>
+                      <div class="cta-text">
+                          <h4>Телефон</h4>
+                          <span>+7(000)000-00-00</span>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-4 col-md-4 mb-30">
+                  <div class="single-cta">
+                      <i class="far fa-envelope-open"></i>
+                      <div class="cta-text">
+                          <h4>Почта</h4>
+                          <span>self@arcane-switch.com</span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="footer-content pt-5 pb-5">
+          <div class="row">
+              <div class="col-xl-4 col-lg-4 mb-50">
+                  <div class="footer-widget">
+                      <div class="footer-logo">
+                          <a href="index.html"><img src="{% static 'img/logo3.png' %}" class="img-fluid" alt="logo" width="20%"></a>
+                      </div>
+                      <div class="footer-text">
+                          <p>В обход отключения от SWIFT и санкционных списков мы помогаем совершать международные цифровые денежные переводы вашим партнерам.</p>
+                      </div>
+                      <div class="footer-social-icon">
+                          <span>Подпишитесь</span>
+                          <a href="#"><i class="fab fa-facebook-f facebook-bg"></i></a>
+                          <a href="#"><i class="fab fa-twitter twitter-bg"></i></a>
+                          <a href="#"><i class="fab fa-google-plus-g google-bg"></i></a>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-30">
+                  <!-- <div class="footer-widget">
+                      <div class="footer-widget-heading">
+                          <h3>Документы</h3>
+                      </div>
+                      <ul>
+                          <li><a href="#">Конфидициальность</a></li>
+                          <li><a href="#">Соглашение</a></li>
+                          <li><a href="#">Публичная оферта</a></li>
+                          <li><a href="#">Справочник</a></li>
   
+                      </ul>
+                  </div> -->
+              </div>
+              <div class="col-xl-4 col-lg-4 col-md-6 mb-50">
+                  <div class="footer-widget">
+                      <div class="footer-widget-heading">
+                          <h3>Документы</h3>
+                      </div>
+                      <div class="footer-text mb-25">
+                        <a href="#" class="footer-link">Конфидициальность</a> <br>
+                        <a href="#" class="footer-link">Соглашение</a><br>
+                        <a href="#" class="footer-link">Публичная оферта</a> <br>
+                        <a href="#" class="footer-link">Справочник</a>
+                          <p></p>
+                      </div>
+                     
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+  <div class="copyright-area">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-12">
+                  <div class="copyright-text">
+                      <p style="text-align: center;">Copyright &copy; 2022, All Right Reserved</p>
+                  </div>
+              </div>
+             
+          </div>
+      </div>
+  </div>
 </footer>
     {% endblock %}
 </body>
