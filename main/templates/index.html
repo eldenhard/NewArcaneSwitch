@@ -206,11 +206,26 @@ i {
   text-align: center !important;
   padding-top: 4% !important;
 }
-.footer-widget {
+.footer-widget, .footer-widget-heading>h3 {
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
   text-align: center !important;
+  text-decoration: none !important;
+  border: none !important;
+  padding-top: 4% !important;
+}
+.footer-widget-heading h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -15px;
+  height: 2px;
+  width: 50px;
+  background: #28282D;
+}
+.footer-text a{
+  padding-top: 3% !important;
 }
   }
  </style>        
