@@ -239,6 +239,7 @@ function SendModal(formDataObjModal){
                    document.getElementById('notifications').style.display = 'block'
                    document.getElementById('modal-overlay').style.display = 'none';
                    setTimeout(NotifDisable, 2000);
+                
                    
 
                })
