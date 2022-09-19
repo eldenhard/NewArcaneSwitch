@@ -4,6 +4,7 @@ from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import AllowAny, IsAuthenticated, IsAdminUser
 from .serializers import *
 from .models import *
+from django.core.mail import send_mail
 
 # Create your views here.
 

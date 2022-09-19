@@ -19,230 +19,19 @@
         <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
 
 <style>
-@media screen and (max-width: 500px) {
-  *
-  {
-  padding: 0 !important;
-  margin: 0 !important;
-  max-width: 100% !important; 
-  }
-
-  .row {
-  max-width: 100% !important;
-  }
-.left {
-  max-width: 100% !important;
-  }
-
-.right {
-  padding: 0;
-  margin: 0;
-  max-width: 100% !important;
-}  
-.h2-left {
-  text-align: center !important;
-  font-size: 25px !important;
-  padding-top: 5% !important;
-}
-.left-subText {
-  text-align: center !important;
-  font-size: 20px !important;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%,0);
-  padding-left: 10px !important;
-  line-height: 25px;
-  font-weight: 400;
-}
-.Plug {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%,0);
-  width: 70%;
-  padding-top: 5px !important;
-  padding-bottom: 5px !important;
-}
-
-.calculator {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%,0);
-  width: 80%;
-  margin-top: 5% !important;
-  margin-bottom: 3% !important;  }
-.raid {
-  padding-top: 5% !important;
-  padding-left: 5% !important;
-}
-.bill {
-  line-height: 25px;
-  padding-left: 5% !important;
-  padding-top: 5% !important;
-}
-.transfer {
-  line-height: 25px;
-  padding-left: 5% !important;
-  margin-top: 5% !important;
-}
-.Plug {
-  position: relative;
-  bottom: 0;
-}
-.open-modal {
-  margin-top: 10% !important;
-  margin-bottom: 3% !important;
-  padding: 10px 0 !important;
-}
-.about-text {
-  text-align: left !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%,0);
-  padding-top: 5% !important;
-}
-.descriptiion-left {
-  padding-top: 10% !important;
-  padding-left: 5% !important;
-  margin-bottom: 10% !important;
-}
-.about-title {
-  padding-top: 5% !important;
-}
-.phone-step {
-  margin-top: 6% !important;
-}
-.phone-container {
-  width: 90% !important;
-  margin-left: 5% !important;
-}
-.descriptiion-left {
-  margin-top: 7% !important;
-}
-.phone-calcslider {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 90% !important;
-  margin-left: 1% !important;
-}
-.accept-how {
-  width: 90% !important;
-  margin-left: 5% !important;
-  margin-top: 5% !important;
-  padding: 10px 0 !important;
-  margin-bottom: 3% !important;
-}
-.phone-rates {
-  padding-top: 5% !important;
-}
-.up {
-  font-size: 16px !important;
-}
-.steps {
-  width: 90% !important;
-  margin-left: 5% !important;
-}
-.phone-step {
-  width: 90% !important;
-  margin-left: 5% !important;
-}
-.phone-partner {
-  text-align: center !important;
-}
-.partners {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  text-align: center !important;
-}
-.official-company {
-  display: none;
-}
-#contact {
-  margin-top: 5% !important;
-}
-.big-text {
-  padding-top: 5% !important;
-  padding-left: 2% !important;
-  font-size: 25px !important;
-}
-.lead  {
-  padding-top: 5% !important;
-  padding-left: 2% !important;
-  font-size: 20px !important;
-  margin-bottom: 5% !important;
-}
-.contact-form {
-  width: 90% !important;
-  margin-left: 5% !important;
-}
-i {
-  display: none !important;
-}
-.form-group {
-  width: 90% !important;
-  margin-left: 5% !important;
-  margin-top: 5% !important;
-}
-.phone-lsform {
-  margin-top: 4% !important;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 90%;
-  padding: 10px 0 !important;
-  border-radius: 10px;
-  margin-bottom: 5% !important;
-}
-.footer-social-icon {
-  display: none;
-}
-.cta-text {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  text-align: center !important;
-  padding-top: 4% !important;
-}
-.footer-widget, .footer-widget-heading>h3 {
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
-  text-align: center !important;
-  text-decoration: none !important;
-  border: none !important;
-  padding-top: 4% !important;
-}
-.footer-widget-heading h3::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -15px;
-  height: 2px;
-  width: 50px;
-  background: #28282D;
-}
-.footer-text a{
-  padding-top: 3% !important;
-}
-  }
  </style>        
 
-<div class="row" style="background: rgb(255,255,255);
+<div class="row" style="margin: 0 !important; padding: 0; background: rgb(255,255,255);
 background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 99%, rgba(51,157,203,1) 100%); margin-top: 2%;">
   <div class="col-md-6 left">
-   <h2 style="font-size: 62px; font-weight: 600; font-family: Helvetica, Arial, sans-serif; text-align: left;"  class="h2-left">Взаиморасчеты с зарубежными партнерами</h2>
-   <br>
-   <p class="left-subText">Оплата счета в рублях</p>
-   <p  class="left-subText">Ставка конвертации валюты ниже банковской</p>
-   <p  class="left-subText">Платеж зачисляется на счет в течение 24 часов</p>
-<br>
-   <button class="Plug">Подробнее</button>
+      <h2 style="font-size: 52px; font-weight: 600; font-family: Helvetica, Arial, sans-serif; text-align: left;"  class="h2-left">Взаиморасчеты с зарубежными партнерами</h2>
+      <br>
+      <p class="left-subText">Оплата счета в рублях</p>
+      <p  class="left-subText">Ставка конвертации валюты ниже банковской</p>
+      <p  class="left-subText">Платеж зачисляется на счет в течение 24 часов</p>
+    <br>
+      <button class="Plug" onclick="window.location.href = '#about'">Подробнее</button>
   </div>
-
-
 
   <div class="col-md-6 right">
     <div class="calculator">
@@ -259,12 +48,6 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
         </span>
         <input id="input_main" class="input" type="number" value="0" placeholder="Введите сумму" />
         <span id="eraser" class="icon eraser">
-          <svg stroke="currentColor" fill="none" stroke-width="2" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round" height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="12" cy="12" r="10"></circle>
-            <line x1="15" y1="9" x2="9" y2="15"></line>
-            <line x1="9" y1="9" x2="15" y2="15"></line>
-          </svg>
-        </span>
       </label>
       <p class="raid">Ставки:</p>
       <hr>
@@ -278,23 +61,10 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
 
     </div>
   </div>
-</div> 
-
-
-
-  <!-- Уведомления -->
-  <div class="wrapper-success" id="notifications" style="display: none;">
-    <div class="card">
-      <div class="subject">
-        <h4>Запрос отправлен</h4>
-        <p>Мы свяжемся с вами в течении суток</p>
-      </div>
-    </div>
-  </div>
-<!-- Конец Уведомления -->
-
+</div>
 
 <style>
+  
 .wrapper-success {
   margin: 50px;
   position: fixed;
@@ -322,18 +92,31 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
 .wrapper-success .card .subject p {
   color: #909092;
 }
-</style>
 
-<!-- Модальное окно -->
+</style>
+  <!-- Уведомления -->
+  <div class="wrapper-success" id="notifications" style="display: block;">
+    <div class="card">
+      <div class="subject">
+        <h4>Запрос отправлен</h4>
+        <p>Мы свяжемся с вами в течении суток</p>
+      </div>
+    </div>
+  </div>
+<!-- Конец Уведомления -->
+
+
+
+<!-- Модальное окно  -->
 
 <aside id="modal-overlay" class="hidden">
   <section id="modal-content">
     <button class="close-modal">&#10005;</button>
-    <h2 class="modal-content-title"><span style="border-bottom: 2px solid #3AB6EC;">Оформление заявки</span></h2>
+    <h2 class="modal-content-title"><span style="border-bottom: 2px solid #3AB6EC;" class="phone-modal-description">Оформление заявки</span></h2>
 
     <form id="modal_post_form">
       {% csrf_token %}
-      <div class="row" style="width: 80%; margin-left: 10%;">
+      <div class="row phone-modal-input" style="width: 80%; margin-left: 10%;">
           <div class="col-md-6" style=" padding-top: 15%;">
             <input type="text" class="inp-req" placeholder="Имя" name="name" value="Alexey" required> <br>
             <input type="number" class="inp-req" placeholder="Телефон" name="phone" value="99999" required> <br>
@@ -366,18 +149,14 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
 
                   <p class="raid">Ставки:</p>
                        <hr>
-                              <p class="bills">Конвертация (РУБ)</p>
-                                  <input  id="convert-request" name="convertation" type="text" value="0"  style="font-weight: 400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black; padding: 0 !important;margin: 0 !important; position: relative; left: 50%; transform: translate(-50%,0); " readonly>
-
+                            <p class="bills">Конвертация (РУБ)</p>
+                              <input  id="convert-request" name="convertation" type="text" value="0"  style="font-weight: 400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black; padding: 0 !important;margin: 0 !important; position: relative; left: 50%; transform: translate(-50%,0); " readonly>
                             <p class="bills">Документы (РУБ)</p>
-                                <input id="docs-request" name="documentation" type="text"  value="0" style="font-weight:400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin: 0; position: relative; left: 50%; transform: translate(-50%,0);" readonly> 
-
+                              <input id="docs-request" name="documentation" type="text"  value="0" style="font-weight:400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin: 0; position: relative; left: 50%; transform: translate(-50%,0);" readonly> 
                             <p class="bills">Исполнитель (РУБ)</p>
-                                 <input id="reward-request" name="operation"  value="0"  style="font-weight: 400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin: 0; position: relative; left: 50%; transform: translate(-50%,0);" readonly>
-                     
-
+                              <input id="reward-request" name="operation"  value="0"  style="font-weight: 400; width: 50%; font-size: 18px; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin: 0; position: relative; left: 50%; transform: translate(-50%,0);" readonly>
                             <p class="transfers">Итого (РУБ):</p>
-                                <input id="TotalRub-request" style=" width: 50%; font-weight: 400; width: 50%; font-size: 18px; text-align: center; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin-bottom: 10px; position: relative; left: 50%; transform: translate(-50%,0);" readonly>
+                              <input id="TotalRub-request" style=" width: 50%; font-weight: 400; width: 50%; font-size: 18px; text-align: center; border: none; text-decoration: none; text-align: center; color: black;padding: 0;margin-bottom: 10px; position: relative; left: 50%; transform: translate(-50%,0);" readonly>
                       
         </div>
       </div>
@@ -390,7 +169,7 @@ background: linear-gradient(173deg, rgba(255,255,255,1) 56%, rgba(58,182,236,1) 
 <!--Конец модального окно -->
 
 <div class="white-block">
-  <h2 class="about-title">Альтернативная система международных платежей</h2>
+  <h2 class="about-title" id="about">Альтернативная система международных платежей</h2>
   <p class="about-text">
       В обход отключения от SWIFT и санкционных списков мы помогаем совершать международные цифровые денежные переводы вашим партнерам. Для этих целей мы используем эквивалентный доллару криптовалюту - USDT
       Обращайтесь к нам и Ваш партнер сможет получить цифровой денежный перевод от вас по договору в этот же день.
@@ -466,13 +245,11 @@ font-weight: 800;">
         <div class="col-md-6" style="padding-top: 2%; background: #F2F6F9; border-radius: 10px;">
           <h2 class="phone-rates"><span style="font-family:'Raleway', sans-serif;">Итого</span> <br> <span id="TotalRub"></span> Руб</h2>
           <h3 class="phone-rates"><span style="font-family: 'Raleway', sans-serif;">Или</span> <br><span  id="TotalUSDT"></span> USDT</h3>
-          <button  class="accept-how">Оформить заявку</button>
+          <button  class="accept-how open-modal">Оформить заявку</button>
         </div>
       </div>
     </div>
   </div>
-
-
 
 <div class="container my-5 phone-step">
   <section id="steps">
@@ -558,6 +335,7 @@ font-weight: 800;">
               <p>БИК Банка:<span>044525411</span></p>
                 <p>Корреспондентский счёт:<span>30101810145250000411</span></p>
                   <p>Банк:<span>ФИЛИАЛ «ЦЕНТРАЛЬНЫЙ» БАНКА ВТБ (ПАО) Г. МОСКВА</span></p>
+                    <p>Юридический адрес: <br><span>127572, город Москва, Новгородская ул, д. 26, кв. 72</span></p>
     
     </div>
   </div> 
@@ -602,7 +380,7 @@ font-weight: 800;">
         </div>
 
         
-        <button type="submit" class="btn btn-color2 btn-block phone-lsform">Отправить</button>
+        <button type="submit" class="btn btn-color2 btn-block phone-lsform" style="background-color: #02BAE8; color: white;">Отправить</button>
       </form>
     </div>
   </div>
@@ -667,10 +445,9 @@ font-weight: 800;">
                           <h3>Документы</h3>
                       </div>
                       <div class="footer-text mb-25">
-                        <a href="#" class="footer-link">Конфидициальность</a> <br>
-                        <a href="#" class="footer-link">Соглашение</a><br>
-                        <a href="#" class="footer-link">Публичная оферта</a> <br>
-                        <a href="#" class="footer-link">Справочник</a>
+                        <a href="/main/static/docs/.docx" download target="_blank" class="footer-link">Конфидициальность</a> <br>
+                        <a href="/main/static/docs/Agreement.docx" download target="_blank" class="footer-link">Соглашение</a><br>
+                        <a href="/main/static/docs/Public_oferta.docx" download target="_blank" class="footer-link">Публичная оферта</a> <br>
                           <p></p>
                       </div>
                      

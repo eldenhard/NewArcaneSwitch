@@ -1,6 +1,24 @@
 from this import d
 from django.db import models
+from django.core.mail import send_mail
+import datetime
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
+
+def send_email(message, theme):
+    try:
+        subject = theme
+        plain_message = message
+        send_mail(
+            subject,
+            plain_message,
+            'self@arcane-switch.com',
+            ['self@arcane-switch.com'],
+            fail_silently=False,
+        )
+    except:
+        pass
 # Create your models here.
 
 
@@ -94,6 +112,16 @@ class Order(models.Model):
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
         db_table = 'orders'
+
+
+@receiver(post_save, sender=Order)
+def send_new_order_email(sender, instance, **kwargs):
+    send_email(f'Новый заказ по денежным переводам от {datetime.datetime.now()} ! Проверьте админку.', 'Денежные переводы, новый заказ')
+
+
+@receiver(post_save, sender=ContactForm)
+def send_new_order_email(sender, instance, **kwargs):
+    send_email(f'Новая заявка на консультацию по денежным переводам от {datetime.datetime.now()} ! Проверьте админку.', 'Денежные переводы, консультация')
 
 
     
