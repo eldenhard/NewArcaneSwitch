@@ -59,6 +59,7 @@ for (let smoothLink of smoothLinks) {
 };
 	
 
+
 function loaderRun(){
     let loader = document.getElementById('loader')
     loader.style.display = 'block'
@@ -248,7 +249,7 @@ function SendModal(formDataObjModal){
                    console.log(data);
                    document.getElementById('notifications').style.display = 'block'
                    document.getElementById('modal-overlay').style.display = 'none';
-                   setTimeout(NotifDisable, 2000);
+                   setTimeout(NotifDisable, 3000);
                 
                    
 

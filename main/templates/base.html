@@ -41,7 +41,7 @@
   <p style="text-align: center;color: black; font-size: 30px; font-family: 'Raleway', sans-serif; ">Arcane Switch</p>
 
   <div class="container loader" id="loader" style="display: none;">
-    <svg id="envelope" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500">     
+    <svg  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 500" style="  display: block; width: 400px; position: absolute; top: 0; left: 0; bottom: 0; right: 0; margin: auto; animation: 2s envelope-enter, 2s envelope-pulse 2.65s 3, 1s envelope-exit 7s forwards;">     
       <style>
       </style>
       <path class="st0" d="M440 350H200c-2.8 0-5-2.2-5-5V155c0-2.8 2.2-5 5-5h240c2.8 0 5 2.2 5 5v190c0 2.8-2.2 5-5 5z" id="envelope-back"/>
@@ -63,23 +63,12 @@
 
   <style>
 .loader{
-  position: fixed;
-  top: 25%;
-  z-index: 1000;
+  position: fixed !important;
+  top: 25% !important;
+  z-index: 1000 !important;
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
-}
-#envelope {
-  display: block;
-  width: 400px;
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  margin: auto;
-  animation: 2s envelope-enter, 2s envelope-pulse 2.65s 3, 1s envelope-exit 7s forwards;
 }
 
 .letter-line {

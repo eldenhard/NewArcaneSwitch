@@ -825,9 +825,9 @@ button.close-modal {
   border-radius: 10px;
 }
 #map {
-  width: 40%;
+  width: 30%;
   height: 500px;
-  margin-left: 15%;
+  margin-left: 20%;
   border-top-left-radius: 10px;
     border-bottom-left-radius: 10px;
 } 
