@@ -4,6 +4,10 @@ let tarif = null;
 let slider = document.getElementById("myRange");
 let main_input = document.getElementById("input_main")
 
+let notif = document.getElementById('notifications')
+document.getElementById('notifications').style.display = 'none'
+
+
 let openModalButtons = document.querySelectorAll('.open-modal');
 let closeModalButton = document.querySelector('.close-modal');
 let modalOverlay = document.querySelector('#modal-overlay');
@@ -11,9 +15,6 @@ let modalOverlay = document.querySelector('#modal-overlay');
 
 let output = document.getElementById("demo");
 output.innerHTML = slider.value;
-
-let notif = document.getElementById('notifications')
-document.getElementById('notifications').style.display = 'none'
 
 document.addEventListener('DOMContentLoaded', prepare_page);
 
@@ -59,6 +60,14 @@ for (let smoothLink of smoothLinks) {
 	
 
 
+function loaderRun(){
+    let loader = document.getElementById('loader')
+    loader.style.display = 'block'
+}
+function loaderClose(){
+    let loader = document.getElementById('loader')
+    loader.style.display = 'none'
+}
 
 function actualPrice(){
     $.ajax(
@@ -162,6 +171,7 @@ slider.oninput = function() {
     calc_plan_cost(this);
 }
 
+
 // Карта Mapbox
 mapboxgl.accessToken = 'pk.eyJ1IjoiZWxkZW5oYXJkIiwiYSI6ImNsN3hhNnZrbTAwd3Mzdmp1dWNuNTB3cTMifQ.1qEgIq7tKtFZwx-NfWqYRA';
 const map = new mapboxgl.Map({
@@ -169,7 +179,7 @@ container: 'map',
 
 style: 'mapbox://styles/mapbox/streets-v11',
 center: [37.580813, 55.901818],
-zoom: 15
+zoom: 15,
 });
 
 const marker1 = new mapboxgl.Marker()
@@ -179,12 +189,14 @@ const marker1 = new mapboxgl.Marker()
 
 
 
+
 // Открытие модального окна
 openModalButtons.forEach((button) =>
     button.addEventListener('click', openModal));
-
 modalOverlay.addEventListener('click', closeModal);
     document.addEventListener('keydown', closeModal);
+
+
 
 function openModal() {
   modalOverlay.classList.remove('hidden');
@@ -217,7 +229,6 @@ document.querySelector("#modal_post_form").addEventListener("submit", function(e
 
 function NotifDisable(){
     document.getElementById('notifications').style.display = 'none'
-
 }
 
 function SendModal(formDataObjModal){
@@ -238,7 +249,8 @@ function SendModal(formDataObjModal){
                    console.log(data);
                    document.getElementById('notifications').style.display = 'block'
                    document.getElementById('modal-overlay').style.display = 'none';
-                   setTimeout(NotifDisable, 2000);
+                   setTimeout(NotifDisable, 3000);
+                
                    
 
                })
@@ -286,6 +298,7 @@ document.querySelector("#contact-form").addEventListener("submit", function(e){
 // }
 
 function Send(formDataObj){
+    loaderRun()
  let csrfToken = document.getElementsByName("csrfmiddlewaretoken")[0].value;
    fetch('api/contact-form/create/', {
     method: 'POST',
@@ -301,13 +314,17 @@ function Send(formDataObj){
         if (response.ok){
             return response.json().then((data)=>{
                 console.log(data);
-                alert('Ваши данные успешно отправлены')
+                loaderClose()
+                document.getElementById('notifications').style.display = 'block'
+                setTimeout(NotifDisable, 2000);
 
             })
            
         }
         else{
             console.log('NOT OK')
+            loaderClose()
+
         }
     })
 //   .then(result => console.log(response.status))
