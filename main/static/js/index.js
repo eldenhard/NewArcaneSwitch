@@ -129,8 +129,8 @@ document.getElementById("docs-request").value = docsRequest
 let rewardRequest = Number((modal.value * tarif.operation)/100)
 document.getElementById("reward-request").value = rewardRequest
 
-document.getElementById("TotalRub-request").value = split_number(Math.round(TotalRubRequest  + convertRequest + docsRequest + rewardRequest))
-document.getElementById("result_modal").value = Math.round(modal.value / price)
+document.getElementById("TotalRub-request").value = split_number((TotalRubRequest  + convertRequest + docsRequest + rewardRequest).toFixed(2))
+document.getElementById("result_modal").value = (modal.value / price).toFixed(2)
 
   
 }
